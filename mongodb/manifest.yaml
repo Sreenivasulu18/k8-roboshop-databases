@@ -39,7 +39,7 @@ spec:
       port: 27017 # service port
       targetPort: 27017 # container port
 # statefulset
-apiversion: apps/v1 
+apiVersion: apps/v1 
 kind: StatefulSet
 metadata:
   name: mongodb
