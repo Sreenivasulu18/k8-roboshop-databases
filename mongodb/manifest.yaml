@@ -1,0 +1,79 @@
+# service, headless service, statefulset, pvc
+apiVersion: v1 
+kind: Service
+metadata:
+  name: mongodb
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: mongodb
+    tier: db 
+spec:
+  selector:
+    project: roboshop
+    component: mongodb
+    tier: db 
+  ports:
+    - protocol: TCP 
+      port: 27017 # service port
+      targetPort: 27017 # contaner port 
+---
+# headless service
+apiVersion: v1 
+kind: Service 
+metadata: 
+  name: mongodb-headless
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: mongodb 
+    tier: db 
+spec:
+  clusterIP: None 
+  selector:
+    project: roboshop
+    component: mongodb
+    tier: db
+  ports:
+    - protocol: TCP 
+      port: 27017 # service port
+      targetPort: 27017 # container port
+# statefulset
+apiversion: apps/v1 
+kind: StatefulSet
+metadata:
+  name: mongodb
+  namespace: roboshop
+spec:
+  replicas: 2
+  selector:
+    matchLabels: 
+      project: roboshop
+      component: mongodb
+      tier: db 
+  serviceName: "mongodb-headless"
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        component: mongodb 
+        tier: db
+    spec:
+      containers:
+      - name: mongodb
+        image: singalasreenivasulu/mongodb:v1 
+        volumeMounts:
+        - name: mongodb
+          mountPath: /data/db
+# this is PVC
+  volumeClaimTemplates:
+  - metadata:
+      name: mongodb
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "roboshop-ebs"
+      resources:
+        requests:
+          storage: 1Gi
+
+
