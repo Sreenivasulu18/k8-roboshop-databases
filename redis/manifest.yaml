@@ -42,7 +42,7 @@ spec:
   selector:
     matchLabels:
       project: roboshop
-      componen: redis 
+      component: redis 
       tier: db
   serviceName: redis-headless
   template:
