@@ -71,7 +71,7 @@ spec:
     component: shipping
     tier: backend
   ports:
-    - potocol: TCP 
+    - protocol: TCP 
       port: 8080 # service port
       targetPort: 8080 # container port
 ---
@@ -86,7 +86,7 @@ metadata:
     tier: backend
 spec:
   scaleTargetRef:
-    apiversion: apps/v1
+    apiVersion: apps/v1
     kind: Deployment
     name: shipping
   minReplicas: 1
