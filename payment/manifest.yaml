@@ -96,7 +96,7 @@ spec:
     name: payment
   minReplicas: 1
   maxReplicas: 10
-  metrrics:
+  metrics:
   - type: Resource
     resource:
       name: cpu
