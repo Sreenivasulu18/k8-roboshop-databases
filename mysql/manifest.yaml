@@ -14,10 +14,6 @@ kind: Service
 metadata:
   name: mysql
   namespace: roboshop
-  labels:
-    project: roboshop
-    component: mysql
-    tier: db 
 spec:
   selector:
     project: roboshop
@@ -34,10 +30,6 @@ kind: Service
 metadata: 
   name: mysql-headless
   namespace: roboshop
-  labels:
-    project: roboshop
-    component: mysql 
-    tier: db 
 spec:
   clusterIP: None 
   selector:
