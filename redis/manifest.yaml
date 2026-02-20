@@ -64,7 +64,7 @@ spec:
       name: redis
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "redis-headless"
+      storageClassName: "roboshop-ebs"
       resources:
         requests:
           storage: 1Gi
