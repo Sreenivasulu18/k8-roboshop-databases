@@ -4,10 +4,6 @@ kind: Service
 metadata:
   name: redis 
   namespace: roboshop
-  labels:
-    project: roboshop
-    component: redis
-    tier: db
 spec:
   selector:
     project: roboshop
@@ -24,10 +20,6 @@ kind: Service
 metadata:
   name: redis-headless
   namespace: roboshop
-  labels:
-    project: roboshop
-    component: redis 
-    tier: db
 spec:
   clusterIP: None 
   selector:
