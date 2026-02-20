@@ -42,7 +42,7 @@ spec:
   selector:
     matchLabels:
       project: roboshop
-      componen: rabbitmq 
+      component: rabbitmq 
       tier: db
   serviceName: rabbitmq-headless
   template:
